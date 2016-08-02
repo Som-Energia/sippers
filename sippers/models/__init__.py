@@ -98,6 +98,7 @@ class MeasuresSchema(Schema):
     """Base model for measures.
     """
     name = fields.String(required=True)
+    data_inici = fields.DateTime(allow_none=True)
     data_final = fields.DateTime(allow_none=True)
     real_estimada = fields.String()
     activa_1 = fields.Integer()
