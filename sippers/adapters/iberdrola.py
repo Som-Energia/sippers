@@ -31,7 +31,8 @@ class IberdrolaSipsAdapter(SipsAdapter, SipsSchema):
 
     @pre_load
     def adapt_indicatiu_icp(self, data):
-        if data.get('indicatiu_icp') == '2':
+        # WARNING: Pending to be approved in iberdrola spec
+        if data.get('indicatiu_icp') in ['2','3']:
             data['indicatiu_icp'] = '1'
         return data
 
@@ -67,6 +68,16 @@ class IberdrolaSipsAdapter(SipsAdapter, SipsSchema):
         if pv and pv in pv_map:
             data['primera_vivenda'] = pv_map[pv]
         return data
+
+    @pre_load
+    def adapt_propietat_equip_mesura(self, data):
+        propietat = data.get('propietat_equip_mesura')
+        if propietat and propietat == 'E':
+            data['propietat_equip_mesura'] = '1'
+        else:
+            data['propietat_equip_mesura'] = '0'
+        return data
+
 
 class IberdrolaMeasuresAdapter(MeasuresAdapter, MeasuresSchema):
 

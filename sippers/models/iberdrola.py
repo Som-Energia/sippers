@@ -82,7 +82,7 @@ class IberdrolaSipsSchema(Schema):
 class IberdrolaMeasuresSchema(Schema):
     any_consum = fields.Integer(position=0, length=4)
     facturacio_consum = fields.String(position=1, length=4)
-    data_anterior = fields.Date(position=2, length=10)
+    data_inici = fields.Date(position=2, length=10)
     data_final = fields.Date(position=3, length=10)
     tarifa_consums = fields.String(position=4, length=4)
     DH = fields.String(position=5, length=3)
